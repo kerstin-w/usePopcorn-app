@@ -2,16 +2,11 @@ import { useState } from "react";
 import { average } from "./App";
 import { tempMovieData, tempWatchedData } from "./tempMovieData";
 
-export function Main({ movies }) {
-  return (
-    <main className="main">
-      <ListBox movies={movies} />
-      <WatchedBox />
-    </main>
-  );
+export function Main({ children }) {
+  return <main className="main">{children}</main>;
 }
 
-function ListBox({ movies }) {
+export function ListBox({ children }) {
   const [isOpen1, setIsOpen1] = useState(true);
   return (
     <div className="box">
@@ -21,12 +16,12 @@ function ListBox({ movies }) {
       >
         {isOpen1 ? "–" : "+"}
       </button>
-      {isOpen1 && <MovieList movies={movies} />}
+      {isOpen1 && children}
     </div>
   );
 }
 
-function MovieList({ movies }) {
+export function MovieList({ movies }) {
   return (
     <ul className="list">
       {movies?.map((movie) => (
@@ -51,7 +46,7 @@ function Movie({ movie }) {
   );
 }
 
-function WatchedBox() {
+export function WatchedBox() {
   const [watched, setWatched] = useState(tempWatchedData);
   const [isOpen2, setIsOpen2] = useState(true);
 
