@@ -33,7 +33,6 @@ export default function App() {
           <MovieList movies={movies} />
         </Box>
         <Box>
-          {" "}
           <>
             <WatchedMovieSummary watched={watched} />
             <WatchedMovieList watched={watched} />
