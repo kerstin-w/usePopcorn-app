@@ -1,13 +1,25 @@
 import { NavBar, Logo, Search, NumResults } from "./NavBar";
-import { Main, ListBox, WatchedBox, MovieList } from "./Main";
+import {
+  Main,
+  Box,
+  WatchedMovieList,
+  WatchedMovieSummary,
+  MovieList,
+} from "./Main";
 import { useState } from "react";
-import { tempMovieData } from "./tempMovieData";
+import { tempMovieData, tempWatchedData } from "./tempMovieData";
 
+/**
+ * The `average` function calculates the average value of an array by summing all elements and dividing
+ * by the array length.
+ * @param arr - An array of numbers for which you want to calculate the average.
+ */
 export const average = (arr) =>
   arr.reduce((acc, cur, i, arr) => acc + cur / arr.length, 0);
 
 export default function App() {
   const [movies, setMovies] = useState(tempMovieData);
+  const [watched, setWatched] = useState(tempWatchedData);
 
   return (
     <>
@@ -17,10 +29,16 @@ export default function App() {
         <NumResults movies={movies} />
       </NavBar>
       <Main>
-        <ListBox>
+        <Box>
           <MovieList movies={movies} />
-        </ListBox>
-        <WatchedBox />
+        </Box>
+        <Box>
+          {" "}
+          <>
+            <WatchedMovieSummary watched={watched} />
+            <WatchedMovieList watched={watched} />
+          </>
+        </Box>
       </Main>
     </>
   );
