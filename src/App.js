@@ -6,7 +6,7 @@ import {
   WatchedMovieSummary,
   MovieList,
 } from "./Main";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { tempMovieData, tempWatchedData } from "./tempMovieData";
 
 /**
@@ -17,9 +17,17 @@ import { tempMovieData, tempWatchedData } from "./tempMovieData";
 export const average = (arr) =>
   arr.reduce((acc, cur, i, arr) => acc + cur / arr.length, 0);
 
+const KEY = "3b0006a4";
+
 export default function App() {
-  const [movies, setMovies] = useState(tempMovieData);
-  const [watched, setWatched] = useState(tempWatchedData);
+  const [movies, setMovies] = useState([]);
+  const [watched, setWatched] = useState([]);
+
+  useEffect(function () {
+    fetch(`http://www.omdbapi.com/?apikey=${KEY}&s=batman`)
+      .then((res) => res.json())
+      .then((data) => setMovies(data.Search));
+  }, []);
 
   return (
     <>
