@@ -10,7 +10,6 @@ import {
 } from "./Main";
 import { Loader } from "./Loader";
 import { ErrorMessage } from "./ErrorMessage";
-import { tempMovieData, tempWatchedData } from "./tempMovieData";
 
 /**
  * The `average` function calculates the average value of an array by summing all elements and dividing
@@ -79,6 +78,7 @@ export default function App() {
         setError("");
         return;
       }
+      handleCloseMovie();
       fetchMovies();
 
       return function () {
