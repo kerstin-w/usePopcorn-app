@@ -5,10 +5,23 @@ import { StarRating } from "./StarRating";
 import { Loader } from "./Loader";
 import { useKey } from "./useKey";
 
+/**
+ * The Main function is a React component that renders a main element with the provided children
+ * inside.
+ * @returns A JSX element representing the main content area with the class name "main" and containing
+ * the children components passed to the Main component.
+ */
 export function Main({ children }) {
   return <main className="main">{children}</main>;
 }
 
+/**
+ * The Box component is a toggleable container that displays its children when open.
+ * @returns The `Box` component is returning a `div` element with the class name "box". Inside the
+ * `div`, there is a `button` element with the class name "btn-toggle" that toggles the `isOpen` state
+ * when clicked. The button text changes between "–" and "+" based on the value of `isOpen`. Below the
+ * button, the `children` are rendered only if
+ */
 export function Box({ children }) {
   const [isOpen, setIsOpen] = useState(true);
   return (
@@ -21,6 +34,12 @@ export function Box({ children }) {
   );
 }
 
+/**
+ * The `MovieList` function renders a list of movies with the ability to select a movie.
+ * @returns The `MovieList` component is being returned, which renders a list of movies using the `ul`
+ * element with the class name "list list-movies". Each movie in the `movies` array is mapped to a
+ * `Movie` component with the `onSelectMovie` function passed as a prop.
+ */
 export function MovieList({ movies, onSelectMovie }) {
   return (
     <ul className="list list-movies">
@@ -31,6 +50,14 @@ export function MovieList({ movies, onSelectMovie }) {
   );
 }
 
+/**
+ * The Movie component renders a movie item with its poster, title, and year, and triggers a function
+ * when clicked.
+ * @returns The `Movie` component is being returned. It is a functional component that displays
+ * information about a movie, such as the movie title, poster, and year. When a user clicks on the list
+ * item representing the movie, the `onSelectMovie` function is called with the movie's IMDb ID as an
+ * argument.
+ */
 function Movie({ movie, onSelectMovie }) {
   return (
     <li onClick={() => onSelectMovie(movie.imdbID)}>
@@ -46,6 +73,15 @@ function Movie({ movie, onSelectMovie }) {
   );
 }
 
+/**
+ * The `MovieDetails` function component fetches and displays details of a specific movie
+ * based on the `selectedId`, allowing users to add the movie to their watched list with a rating.
+ * @returns The `MovieDetails` component is returning JSX elements that display details of a selected
+ * movie. The component includes a header section with movie information such as title, release date,
+ * genre, IMDb rating, and poster. It also includes a section for user interaction where users can rate
+ * the movie using a star rating component and add the movie to their watched list. Additionally, there
+ * is a section displaying the movie plot
+ */
 export function MovieDetails({
   selectedId,
   onCloseMovie,
@@ -89,6 +125,8 @@ export function MovieDetails({
   }
   useKey("Escape", onCloseMovie);
 
+  /* The `useEffect` hook you provided is responsible for fetching and setting the details of a specific
+movie based on the `selectedId` when it changes.*/
   useEffect(
     function () {
       async function getMovieDetails() {
@@ -105,6 +143,8 @@ export function MovieDetails({
     [selectedId]
   );
 
+  /* The `useEffect` hook is setting the document title based on the `title`
+state variable. */
   useEffect(
     function () {
       if (!title) return;
@@ -174,6 +214,13 @@ export function MovieDetails({
   );
 }
 
+/**
+ * The function WatchedMovieSummary calculates and displays average IMDb rating, user rating, and
+ * runtime of watched movies.
+ * @returns The `WatchedMovieSummary` component is being returned, which displays a summary of movies
+ * that have been watched. It includes the total number of movies watched, the average IMDb rating, the
+ * average user rating, and the average runtime of the watched movies.
+ */
 export function WatchedMovieSummary({ watched }) {
   const avgImdbRating = average(watched.map((movie) => movie.imdbRating));
   const avgUserRating = average(watched.map((movie) => movie.userRating));
@@ -203,6 +250,12 @@ export function WatchedMovieSummary({ watched }) {
   );
 }
 
+/**
+ * The WatchedMovieList component renders a list of watched movies with the ability to delete them.
+ * @returns A list of watched movies, where each movie is displayed using the WatchedMovie component.
+ * Each movie is rendered with a unique key based on its imdbID, and a onDeleteWatched function is
+ * passed down to allow for deleting movies from the list.
+ */
 export function WatchedMovieList({ watched, onDeleteWatched }) {
   return (
     <ul className="list">
@@ -217,6 +270,12 @@ export function WatchedMovieList({ watched, onDeleteWatched }) {
   );
 }
 
+/**
+ * The WatchedMovie function renders a component displaying details of a watched movie and includes a
+ * button to delete it.
+ * @returns The `WatchedMovie` component is being returned. It displays information about a watched
+ * movie including the movie poster, title, IMDb rating, user rating, runtime, and a delete button.
+ */
 function WatchedMovie({ movie, onDeleteWatched }) {
   return (
     <li>
