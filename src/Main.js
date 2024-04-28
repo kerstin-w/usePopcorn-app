@@ -3,6 +3,7 @@ import { average } from "./App";
 import { KEY } from "./App";
 import { StarRating } from "./StarRating";
 import { Loader } from "./Loader";
+import { useKey } from "./useKey";
 
 export function Main({ children }) {
   return <main className="main">{children}</main>;
@@ -86,21 +87,7 @@ export function MovieDetails({
     onAddWatched(newWatchedMovie);
     onCloseMovie();
   }
-
-  useEffect(
-    function () {
-      function callback(e) {
-        if (e.code === "Escape") {
-          onCloseMovie();
-        }
-      }
-      document.addEventListener("keydown", callback);
-      return function () {
-        document.removeEventListener("keydown", callback);
-      };
-    },
-    [onCloseMovie]
-  );
+  useKey("Escape", onCloseMovie);
 
   useEffect(
     function () {
