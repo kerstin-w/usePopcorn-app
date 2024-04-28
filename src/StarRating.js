@@ -26,7 +26,7 @@ StarRating.propTypes = {
  * to set a rating by clicking on stars and displays corresponding messages based on the selected
  * rating.
  */
-export default function StarRating({
+export function StarRating({
   maxRating = 5,
   color = "#fcc419",
   size = 48,
