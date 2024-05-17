@@ -12,7 +12,11 @@ import { useKey } from "./useKey";
  * the children components passed to the Main component.
  */
 export function Main({ children }) {
-  return <main className="main">{children}</main>;
+  return (
+    <main className="main mt-10 flex gap-10 justify-center md:flex-nowrap flex-wrap">
+      {children}
+    </main>
+  );
 }
 
 /**
@@ -25,7 +29,7 @@ export function Main({ children }) {
 export function Box({ children }) {
   const [isOpen, setIsOpen] = useState(true);
   return (
-    <div className="box">
+    <div className="box rounded-lg w-full md:w-6/12 h-3/6 md:h-full">
       <button className="btn-toggle" onClick={() => setIsOpen((open) => !open)}>
         {isOpen ? "–" : "+"}
       </button>

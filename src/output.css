@@ -583,6 +583,10 @@ video {
   margin: 5rem;
 }
 
+.mt-10 {
+  margin-top: 2.5rem;
+}
+
 .mt-5 {
   margin-top: 1.25rem;
 }
@@ -595,6 +599,14 @@ video {
   display: flex;
 }
 
+.h-3\/6 {
+  height: 50%;
+}
+
+.w-full {
+  width: 100%;
+}
+
 @keyframes pulse {
   50% {
     opacity: .5;
@@ -603,6 +615,22 @@ video {
 
 .animate-pulse {
   animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.gap-10 {
+  gap: 2.5rem;
+}
+
+.rounded-lg {
+  border-radius: 0.5rem;
 }
 
 .p-16 {
@@ -673,25 +701,37 @@ body {
 }
 
 .main {
-  margin-top: 2.4rem;
   height: calc(100vh - 7.2rem - 3 * 2.4rem);
-  display: flex;
-  gap: 2.4rem;
-  justify-content: center;
 }
 
 .box {
-  width: 42rem;
-  max-width: 42rem;
   background-color: var(--color-background-500);
-  border-radius: 0.9rem;
-  overflow: scroll;
+  overflow: hidden;
   position: relative;
 }
 
-.box::-webkit-scrollbar,
+.box:first-child {
+}
+
 .list::-webkit-scrollbar {
-  display: none;
+  width: 10px;
+}
+
+.list::-webkit-scrollbar-track {
+  border-radius: 10px;
+  background-color: var(--color-text-dark);
+}
+
+.list::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: var(--color-primary-light);
+}
+
+.list::-webkit-scrollbar-thumb:hover {
+  background: var(--color-primary);
+}
+
+.list::-webkit-scrollbar {
   scroll-behavior: smooth;
 }
 
@@ -770,9 +810,11 @@ body {
 }
 
 .list {
+  height: 100%;
   list-style: none;
   padding: 0.8rem 0;
-  overflow: scroll;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 .list-watched {
@@ -980,5 +1022,19 @@ body {
 
   100% {
     transform: rotate(360deg);
+  }
+}
+
+@media (min-width: 768px) {
+  .md\:h-full {
+    height: 100%;
+  }
+
+  .md\:w-6\/12 {
+    width: 50%;
+  }
+
+  .md\:flex-nowrap {
+    flex-wrap: nowrap;
   }
 }

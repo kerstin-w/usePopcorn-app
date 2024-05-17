@@ -46,24 +46,37 @@ body {
 }
 
 .main {
-  margin-top: 2.4rem;
   height: calc(100vh - 7.2rem - 3 * 2.4rem);
-  display: flex;
-  gap: 2.4rem;
-  justify-content: center;
 }
 
 .box {
-  width: 42rem;
-  max-width: 42rem;
   background-color: var(--color-background-500);
-  border-radius: 0.9rem;
-  overflow: scroll;
+  overflow: hidden;
   position: relative;
 }
-.box::-webkit-scrollbar,
+
+.box:first-child {
+}
+
 .list::-webkit-scrollbar {
-  display: none;
+  width: 10px;
+}
+
+.list::-webkit-scrollbar-track {
+  border-radius: 10px;
+  background-color: var(--color-text-dark);
+}
+
+.list::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: var(--color-primary-light);
+}
+
+.list::-webkit-scrollbar-thumb:hover {
+  background: var(--color-primary);
+}
+
+.list::-webkit-scrollbar {
   scroll-behavior: smooth;
 }
 
@@ -143,9 +156,11 @@ body {
 }
 
 .list {
+  height: 100%;
   list-style: none;
   padding: 0.8rem 0;
-  overflow: scroll;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 .list-watched {
