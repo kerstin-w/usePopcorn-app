@@ -603,6 +603,10 @@ video {
   height: 50%;
 }
 
+.h-full {
+  height: 100%;
+}
+
 .w-full {
   width: 100%;
 }
@@ -615,6 +619,10 @@ video {
 
 .animate-pulse {
   animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.list-none {
+  list-style-type: none;
 }
 
 .flex-wrap {
@@ -708,9 +716,6 @@ body {
   background-color: var(--color-background-500);
   overflow: hidden;
   position: relative;
-}
-
-.box:first-child {
 }
 
 .list::-webkit-scrollbar {
@@ -810,10 +815,8 @@ body {
 }
 
 .list {
-  height: 100%;
-  list-style: none;
   padding: 0.8rem 0;
-  overflow-y: scroll;
+  overflow-y: auto;
   overflow-x: hidden;
 }
 

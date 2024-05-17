@@ -55,9 +55,6 @@ body {
   position: relative;
 }
 
-.box:first-child {
-}
-
 .list::-webkit-scrollbar {
   width: 10px;
 }
@@ -156,10 +153,8 @@ body {
 }
 
 .list {
-  height: 100%;
-  list-style: none;
   padding: 0.8rem 0;
-  overflow-y: scroll;
+  overflow-y: auto;
   overflow-x: hidden;
 }
 

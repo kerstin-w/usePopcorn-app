@@ -46,7 +46,7 @@ export function Box({ children }) {
  */
 export function MovieList({ movies, onSelectMovie }) {
   return (
-    <ul className="list list-movies">
+    <ul className="list list-movies h-full list-none">
       {movies?.map((movie) => (
         <Movie movie={movie} key={movie.imdbID} onSelectMovie={onSelectMovie} />
       ))}
@@ -262,7 +262,7 @@ export function WatchedMovieSummary({ watched }) {
  */
 export function WatchedMovieList({ watched, onDeleteWatched }) {
   return (
-    <ul className="list">
+    <ul className="list list-watched">
       {watched.map((movie) => (
         <WatchedMovie
           movie={movie}
