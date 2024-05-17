@@ -5,9 +5,11 @@
  */
 export function Loader() {
   return (
-    <div className="loader-wrapper">
+    <div className="m-20">
       <div className="spinner"></div>
-      <p className="loader">Loading...</p>
+      <p className="uppercase text-center text-3xl font-semibold mt-5 animate-pulse">
+        Loading...
+      </p>
     </div>
   );
 }
