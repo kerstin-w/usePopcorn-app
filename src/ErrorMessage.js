@@ -7,7 +7,7 @@
  */
 export function ErrorMessage({ message }) {
   return (
-    <p className="error">
+    <p className="p-16 text-center text-3xl">
       <span>⛔️</span>
       &nbsp;{message}
     </p>
